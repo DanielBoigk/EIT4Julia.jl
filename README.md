@@ -5,11 +5,11 @@ Dear Visitor: Over the next weeks I'm gonna build a Electrical Impedance Tomogra
 I'm doing this because of there being several downsides with the existing libraries, like:
 - Lack of Integration with Machine Learning Frameworks
 - Lack of Documentation
-- Performance deficits
+- Performance deficits and parallelization of GPU 
 - Lack of integration with FEM frameworks
 
-Please [contact me](mailto:dn.boigk@gmail.com) if you wish to participate.
 
-This Library wil be build on Ferrite.jl, Enzyme.jl, Lux.jl and Reactant.jl. However lateron I will also consider integration with other Galerkin methods like based on spectral methods (like ApproxFun.jl).
+This Library wil be build on [Ferrite.jl](https://ferrite-fem.github.io/Ferrite.jl/stable/), [Enzyme.jl](https://enzyme.mit.edu/julia/stable/), [Lux.jl](https://lux.csail.mit.edu/stable/) and [Reactant.jl](https://enzymead.github.io/Reactant.jl/dev/introduction/). However lateron I will also consider integration with other Galerkin methods like based on spectral methods (like [ApproxFun.jl](https://juliaapproximation.github.io/ApproxFun.jl/stable/)).
+This is supposed to be very modular, so just plugin other (pseudo) metrics/loss maps, regularizer, optimizers, ...
 
-I'm actively looking for a students assistant job or a grant in order to build this library. This library is basically my masters thesis.
+I'm actively looking for a student assistant position or a grant in order to build this library. This library is basically my masters thesis. If anyone has serious interest in this please [contact me](mailto:dn.boigk@gmail.com) .
