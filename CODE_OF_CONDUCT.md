@@ -7,3 +7,5 @@ Instances of abusive, harassing, or otherwise unacceptable behavior may be repor
 As a NumFOCUS-affiliated project, we uphold the NumFOCUS Code of Conduct:  
 <https://numfocus.org/code-of-conduct>
 
+
+Basically I want to try and apply to NumFOCUS I hope that's realistic.
