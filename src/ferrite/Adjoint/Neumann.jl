@@ -1,3 +1,22 @@
+mutable struct EITModeN
+    u::AbstractVector
+    λ::AbstractVector
+    δσ::AbstractVector
+    f::AbstractVector
+    g::AbstractVector
+    rhs::AbstractVector
+    error::Float64
+    length::Int64
+    m::Int64
+end
+function EITModeN(g::AbstractVector, f::AbstractVector)
+    L = length(g)
+    M = length(f)
+    return EITMode(zeros(L), zeros(L), zeros(L), f, g, zeros(L), 0.0, L, M)
+end
+
+
+
 function state_adjoint_step_neumann_cg!(mode::EITModeN, L::AbstractMatrix, M, d,∂d ,down,up,fe::FerriteFESpace, maxiter=500)
     # We solve the state equation ∇⋅(σ∇uᵢ) = 0 : σ∂u/∂𝐧 = g
     cg!(mode.u,L, mode.g; maxiter = maxiter)
