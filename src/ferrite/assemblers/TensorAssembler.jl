@@ -1,12 +1,13 @@
-function calculate_bilinear_map(a::AbstractVector, b::AbstractVector, fe::FerriteFESpace, M)
+# Assemble the projection of ∇(u) ⋅ ∇(λ) onto the FE space.
+# This computes rhs_i = ∫ (∇u ⋅ ∇λ) ϕ_i dΩ for each test function ϕ_i.
+function calculate_bilinear_map!(rhs::AbstractVector, a::AbstractVector, b::AbstractVector, fe::FerriteFESpace, M)
     cellvalues = fe.cellvalues
     dh = fe.dh
-    n = fe.n
-    rhs = zeros(n)
     n_basefuncs = getnbasefunctions(cellvalues)
     qpoints = getnquadpoints(cellvalues)
     re = zeros(n_basefuncs)
-    
+    ∇a_q = zero(Vec{2,Float64})
+    ∇b_q = zero(Vec{2,Float64})
     for cell in CellIterator(dh)
         dofs = celldofs(cell)
         reinit!(cellvalues, cell)
@@ -18,8 +19,8 @@ function calculate_bilinear_map(a::AbstractVector, b::AbstractVector, fe::Ferrit
         for q in 1:qpoints
             dΩ = getdetJdV(cellvalues, q)
             
-            ∇a_q = zero(Vec{2,Float64})
-            ∇b_q = zero(Vec{2,Float64})
+            fill!(∇a_q,0.0)
+            fill!(∇b_q,0.0)
             
             for j in 1:n_basefuncs
                 ∇ϕⱼ = shape_gradient(cellvalues, q, j)
@@ -38,4 +39,9 @@ function calculate_bilinear_map(a::AbstractVector, b::AbstractVector, fe::Ferrit
     end
     
     return M \ rhs
+end
+
+function calculate_bilinear_map(a::AbstractVector, b::AbstractVector, fe::FerriteFESpace, M)
+    rhs = zeros(fe.n)
+    return calculate_bilinear_map!(rhs, a, b, fe, M)
 end
