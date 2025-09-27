@@ -231,7 +231,7 @@ end
 # This computes rhs_i = ∫ (∇u ⋅ ∇λ) ϕ_i dΩ for each test function ϕ_i.
 # Assuming u and λ are scalar fields in the same FE space.
 # cellvalues should be CellScalarValues(qr, ip) where qr is QuadratureRule, ip is Interpolation.
-function calculate_bilinear_map(a::AbstractVector, b::AbstractVector, cellvalues::CellValues, dh::DofHandler, M_cholesky)
+function calculate_bilinear_map(a::AbstractVector, b::AbstractVector, cellvalues::CellValues, dh::DofHandler, M)
     n = ndofs(dh)
     rhs = zeros(n)
     n_basefuncs = getnbasefunctions(cellvalues)
