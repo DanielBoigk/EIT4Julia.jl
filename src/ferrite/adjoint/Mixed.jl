@@ -16,3 +16,4 @@ function state_adjoint_step_mixed_cg!(mode::EITModeM, L::AbstractMatrix, M, d,�
     mode.δσ = calculate_bilinear_map!(mode.rhs,mode.λ, mode.w, fe, M) 
     return mode.δσ, mode.error   
 end
+
