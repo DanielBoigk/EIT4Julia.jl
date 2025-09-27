@@ -1,4 +1,4 @@
-name = "EIT4Julia"
+name = "ModularEIT"
 uuid = "b783373a-fbd8-4ca0-a6a9-131c3d08b4bc"
 authors = ["DanielBoigk <dn.boigk@gmail.com>"]
 version = "0.1.0"
