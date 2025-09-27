@@ -10,7 +10,7 @@ function state_adjoint_step_mixed_cg!(mode::EITModeM, L::AbstractMatrix, M, d,�
     mode.w .-= mean 
 
     # We solve the adjoint equation ∇⋅(σ∇λᵢ) = ∂ₓd(w,0)
-    cg!(mode.λ, L, up(∂d(b,0)); maxiter = maxiter)
+    cg!(mode.λ, L, ∂d(mode.w,0); maxiter = maxiter)
     mode.error = d(b,0)
     # Calculate ∇(uᵢ)⋅∇(λᵢ) here: 
     mode.δσ = calculate_bilinear_map!(mode.rhs,mode.λ, mode.w, fe, M) 
