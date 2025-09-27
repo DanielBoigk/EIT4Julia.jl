@@ -165,16 +165,14 @@ function assemble_L(fe::FerriteFESpace, γ,ϵ::Float64)
 end
 
 
-
-
 # This function is to get a stiffness matrix for dirichlet boundary conditions:
-function to_dirichlet!(K::AbstractArray,fe::FerriteFESpace)
-    apply!(K,fe.ch)
-    K
+function to_dirichlet!(L::AbstractArray,fe::FerriteFESpace)
+    apply!(L,fe.ch)
+    L
 end
-function to_dirichlet(K::AbstractArray,fe::FerriteFESpace)
-    Kd = copy(K)
-    apply!(Kd,fe.ch)
-    Kd
+function to_dirichlet(L::AbstractArray,fe::FerriteFESpace)
+    Ld = copy(L)
+    apply!(Ld,fe.ch)
+    Ld
 end
 
