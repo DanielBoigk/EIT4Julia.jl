@@ -1,6 +1,6 @@
 module HilbertSpaces
 
-export AbstractHilbertSpace,AbstractGalerkinSolver, AbstractBoundaryPair
+export AbstractHilbertSpace, AbstractGalerkinSolver, AbstractAdjointSolver, AbstractBoundaryPair
 
 
 abstract type AbstractHilbertSpace end # This is supposed to hold all information about the space
